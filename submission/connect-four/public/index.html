@@ -1,0 +1,174 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="script.js"></script>
+  <script>
+    var socket = io();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="header">
+    <span>Connect 4</span>
+  </div>
+
+  <div id="username">
+    <span>Your username is: </span>
+  </div>
+
+  <div id="opponentusername">
+    <span>Your opponent is: </span>
+  </div>
+
+
+  <!--
+    https://www.w3schools.com/howto/howto_js_dropdown.asp
+  -->
+<div class="dropdown">
+  <button onclick="menuFunc()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content" style="text-align: center;">
+    <span style="padding: 10px">Theme Selector</span>
+    <button type="button" class="theme1 block btn btn-primary block" onclick="settheme(1)">Light Board</button>
+    <button type="button" class="theme2 block btn btn-primary block" onclick="settheme(2)">Dark Board</button>
+    <button type="button" class="theme3 block btn btn-primary block" onclick="settheme(3)">Blue Board</button>
+    <input type="text" class="form-control" name="newuser" id="newuser" autocomplete="off" placeholder="New Username" />
+    <div class="d-table-cell align-middle">
+      <button class="btn btn-primary block" type="submit" id="newusername">Set Username</button>
+    </div>
+  </div>
+</div>
+
+  <!-- 
+    Repurposed login form for menu
+    Source: https://bootsnipp.com/snippets/z8MPd
+  -->
+  <div class="menucontainer">
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Game Setup</div>
+          <div class="card-body">
+
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="lobby" class="cols-sm-2 control-label">Your lobby number is:</label>
+                <div class="cols-sm-10">
+                  <span id="playerlobby"></span>
+                  <p style="padding-top: 10px">Invite other players to this lobby by sending them this lobby number.</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="existing" class="cols-sm-2 control-label">Join an existing lobby</label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="LobbyNumber" id="lobbynum" autocomplete="off" placeholder="Lobby Number" />
+                    <div class="d-table-cell align-middle">
+                      <button class="btn btn-primary" type="submit" id="joinlobby">enter</button>
+                    </div>
+                  </div>
+                  <span id="error"></span>
+
+                </div>
+              </div>
+              <div class="form-group ">
+                <button type="button" id="randomlobby" class="btn btn-primary btn-lg btn-block login-button">Matchmake into a Random Lobby</button>
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="gameboard"></div>
+
+  </div>
+
+  <div class="gamecontainer">
+    <table align="center" class="gameboard">
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span id="turn"></span>
+  </div>
+
+</body>
+
+</html>

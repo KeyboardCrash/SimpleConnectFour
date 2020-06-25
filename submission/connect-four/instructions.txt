@@ -1,0 +1,12 @@
+Connect 4
+Brandon Lu
+30053269
+
+# Instructions
+
+1.) Install packages with npm Install
+2.) Run the server with npm start or node server.js
+3.) Connect two different clients (normal and incognito, or a different browser)
+    using the url localhost:3000
+4.) Either pass the lobby number into the client, or matchmake into the lobby
+5.) Play the game
